@@ -70,12 +70,12 @@ JSP 페이지를 구성하는 구성요소
 내장 객체 : jsp에서 자주 사용하는 객체들을 묶어 놓은 것
 - request(javax.servlet.http.HttpServletRequest) : 웹 브라우저의 요청 정보를 저장하고 있는 객체
 - response(javax.servlet.http.HttpServletResponse) : 웹 브라우저의 요청에 대한 응답 정보를 저장하고 있는 객체
-- out
-- session
-- application
-- pageContext
-- page
-- config
-- exception
+- out(javax.servlet.jsp.jsp.jspWriter) : jsp 페이지에 출력할 내용을 가지고 있는 출력 스트림 객체
+- session(javax.servlet.http.HttpSession) : 하나의 웹 브라우저의 정보를 유지하기 위한 세션 정보를 저장하고 있는 객체
+- application(javax.servlet.servletContext) : 웹 어플리케이션 Context의 정보를 저장하고 있는 객체
+- pageContext(javax.servlet.jsp.pageContext) : jsp 페이지에 대한 정보를 저장하고 있는 객체
+- page(java.lang.Object) : jsp 페이지를 구현한 자바 클래스 객체
+- config(javax.servlet.ServletConfig) : jsp 페이지에 대한 설정 정보를 저장하고 있는 객체
+- exception(java.lang.Throwable) : jsp 페이지서 예외가 발생한 경우에 사용되는 객체
 </div>
 </details>
