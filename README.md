@@ -69,7 +69,7 @@ JSP 페이지를 구성하는 구성요소
 
 내장 객체 : jsp에서 자주 사용하는 객체들을 묶어 놓은 것
 - request(javax.servlet.http.HttpServletRequest) : 웹 브라우저의 요청 정보를 저장하고 있는 객체
-- response
+- response(javax.servlet.http.HttpServletResponse) : 웹 브라우저의 요청에 대한 응답 정보를 저장하고 있는 객체
 - out
 - session
 - application
