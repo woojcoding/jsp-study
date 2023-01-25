@@ -22,7 +22,7 @@
         <!-- Center -->
         <tr height="400">
             <td width="600" align="center">
-            <img src="img/canon.png" width="400" height="300">
+            <img src="../img/canon.png" width="400" height="300">
             </td>
         </tr>
 
