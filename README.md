@@ -85,3 +85,23 @@ include 디렉티브 : 포함될 page를 한 page로 병합하고 각각 컴파�
 - config(javax.servlet.ServletConfig) : jsp 페이지에 대한 설정 정보를 저장하고 있는 객체
 - exception(java.lang.Throwable) : jsp 페이지서 예외가 발생한 경우에 사용되는 객체
 </div>
+
+<details>
+<summary>액션 태그/summary>
+<div markdown="1">
+
+- include : 다른 페이지의 실행 결과를 현재 페이지에 포함시킬 때 사용 -> 한번에 병합되어 컴파일되는 것이 아니라 각각 컴파일되어 결과가 한 페이지에 보여지는 것이다.
+- 
+- <include 디렉티브>
+    <%@ include file="Top.jst" %> : include 디렉티브는 한번에 병합되어 컴파일이 된다.
+
+- <include 액션태그>
+  <jsp:include page="Top.jsp"> : include 액션태그는 각각 따로 컴파일되어 결과만 하나의 페이지로 보여주는 것으로
+  <jsp:param value="값" name="파라미터명"/> 을 통해 파라미터 값을 해당 jsp 페이지로 넘겨 줄 수 있다.
+
+- forward : 페이지 사이의 제어를 이동시킬 때 사용
+- plug-in : 웹 브라우저에서 자바 애플릿을 실행시킬 때 사용
+- useBean : 자바빈을 jsp 페이지에서 사용할 때 사용
+- setProperty : 프로퍼티의 값을 세팅할 때 사용
+- getProperty : 프로퍼티의 값을 얻어낼 때 사용
+</div>
