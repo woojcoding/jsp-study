@@ -32,6 +32,13 @@ JSP 페이지를 구성하는 구성요소
 - autoFlush : 출력 버퍼가 다 찼을경우 자동으로 버퍼의 데이터를 출력 스트림으로 보내고 비울지 여부 (기본값 : true)
 - errorPage : JSP 페이지 실행 중 에러 발생 시 보여줄 페이지를 지정
 - isErrorPage: 에러 페이지 여부를 지정 -> true인 경우 이 페이지는 에러페이지 (기본값 false)
+
+include 디렉티브 : 포함될 page를 한 page로 병합하고 각각 컴파일 하는 것이 아닌 하나의 page로 인식 및 변환 후 compile 
+
+<%@ include file="top.jsp%> 
+
+<%@ include file="bottom.jsp%>
+
 </div>
 </details>
 
@@ -78,4 +85,3 @@ JSP 페이지를 구성하는 구성요소
 - config(javax.servlet.ServletConfig) : jsp 페이지에 대한 설정 정보를 저장하고 있는 객체
 - exception(java.lang.Throwable) : jsp 페이지서 예외가 발생한 경우에 사용되는 객체
 </div>
-</details>
