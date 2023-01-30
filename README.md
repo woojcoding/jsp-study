@@ -110,7 +110,19 @@ include 디렉티브 : 포함될 page를 한 page로 병합하고 각각 컴파�
  
 - plug-in : 웹 브라우저에서 자바 애플릿을 실행시킬 때 사용
 - useBean : 자바빈을 jsp 페이지에서 사용할 때 사용
+    
+- 자바빈 : 여러개의 데이터를 하나의 클래스로 저장해 놓고 그 클래스를 ArrayList 이런 곳에 저장할 때 자바빈이라는 용어를 쓴다. jsp와 db간 데이터를 쉽게 주고 받기 위해 만듦
 - setProperty : 프로퍼티의 값을 세팅할 때 사용
 - getProperty : 프로퍼티의 값을 얻어낼 때 사용
+</div>
+</details>
+
+<details>
+<summary>db 연동</summary>
+<div markdown="1">
+
+- jsp 내에서 db연동
+- jsp로 데이터를 받아서 DAO java class를 이용해서 db에 넣고 뺀다.
+- connection pool
 </div>
 </details>
