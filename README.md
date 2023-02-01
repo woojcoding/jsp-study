@@ -120,9 +120,53 @@ include 디렉티브 : 포함될 page를 한 page로 병합하고 각각 컴파�
 <details>
 <summary>db 연동</summary>
 <div markdown="1">
+오라클 db 연동하기
+ojdbc11.jar 를 다운로드 받은 후 FILE -> Project Structure을 눌러 Libraries에 다운 받은 .jar 파일을 등록해주면 된다.
+
+```java
+// 오라클에 접속하는 소스를 작성
+String id = "system"; // 접속아이디
+String pass = "123456";
+String url= "jdbc:oracle:thin:@localhost:1521:XE"; //접속 URL
+     try{
+        //1. 해당 데이터 베이스를 사용한다고 선언(클래스를 등록 = 오라클용을 사용)
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+
+        //2. 해당 데이터 베이스에 접속
+        Connection con = DriverManager.getConnection(url, id, pass);
+
+        //3. 접속 후 쿼리를 준비하여
+        String sql = "insert into member values(?, ?, ?, ?, ?, ?, ? , ?)";
+
+        // 쿼리를 사용하도록 설정
+        PreparedStatement pstmt = con.prepareStatement(sql);
+
+        // ?에 맞게 데이터를 매핑
+        pstmt.setString(1, mbean.getId());
+        pstmt.setString(2, mbean.getPass1());
+        pstmt.setString(3, mbean.getEmail());
+        pstmt.setString(4, mbean.getTel());
+        pstmt.setString(5, mbean.getHobby());
+        pstmt.setString(6, mbean.getJob());
+        pstmt.setString(7, mbean.getAge());
+        pstmt.setString(8, mbean.getInfo());
+
+        // 4. 오라클에서 쿼리 실행
+        pstmt.executeUpdate(); // insert, update, delete 시 사용하는 메서드
+
+        //5. 자원 반납
+        con.close();
+        } catch (Exception e) {
+        e.printStackTrace();
+        }
+
+```
+
+        
 
 - jsp 내에서 db연동
 - jsp로 데이터를 받아서 DAO java class를 이용해서 db에 넣고 뺀다.
+-  DAO(DATA ACCESS OBJECT) : DB에 접근하는 클래스를 별도로 만들어서 사용 -> DB에 연결하고 사용해야한다.
 - connection pool
 </div>
 </details>
