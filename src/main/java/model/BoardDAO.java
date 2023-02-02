@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Vector;
 
 public class BoardDAO {
     String id = "system";
@@ -64,5 +65,41 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Vector<BoardBean> getAllBoard() {
+        Vector<BoardBean> vector = new Vector<>();
+
+        getCon();
+
+        try {
+            String sql = "select * from board order by ref desc, re_step asc";
+
+            pstmt = con.prepareStatement(sql);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                BoardBean bean = new BoardBean();
+                bean.setNum(rs.getInt(1));
+                bean.setWriter(rs.getString(2));
+                bean.setEmail(rs.getString(3));
+                bean.setSubject(rs.getString(4));
+                bean.setPassword(rs.getString(5));
+                bean.setReg_date(rs.getDate(6).toString());
+                bean.setRef(rs.getInt(7));
+                bean.setRe_step(rs.getInt(8));
+                bean.setRe_level(rs.getInt(9));
+                bean.setReadCount(rs.getInt(10));
+                bean.setContent(rs.getString(11));
+
+                vector.add(bean);
+            }
+
+            con.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return vector;
     }
 }
