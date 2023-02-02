@@ -124,4 +124,65 @@ public class MemberDAO {
             throw new RuntimeException(e);
         } return bean;
     }
+    // 한회원의 패스워드 값을 리턴하는 메서드 작성
+    public String getPass(String id) {
+        String pass = "";
+        try{
+            getCon();
+
+            String sql = "select pass1 from member where id=?";
+
+            pstmt = con.prepareStatement(sql);
+            // ?에 값을 붙힘
+            pstmt.setString(1, id);
+            // 쿼리 실행
+            rs = pstmt.executeQuery();
+
+            if(rs.next()) {
+                pass = rs.getString(1);
+            }
+            //자원 반납
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } return pass;
+    }
+
+    public void updateMember(MemberBean bean) {
+        getCon();
+
+        try {
+            String sql = "update member set email=?, tel=? where id=?";
+
+            pstmt = con.prepareStatement(sql);
+
+            pstmt.setString(1,bean.getEmail());
+            pstmt.setString(2,bean.getTel());
+            pstmt.setString(3,bean.getId());
+
+            pstmt.executeUpdate();
+
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deleteMember(String id) {
+        getCon();
+
+        try {
+            String sql = "delete from member where id=?";
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,id);
+
+            pstmt.executeUpdate();
+
+            con.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

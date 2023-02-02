@@ -50,6 +50,14 @@
                 <td width="150" align="center"> 정보 </td>
                 <td width="250"> <%=mbean.getInfo()%> </td>
             </tr>
+            <tr height="50">
+                <td width="150" align="center" colspan="2" >
+                    <button onclick="location.href='MemberUpdateForm.jsp?id=<%=mbean.getId()%>'"> 회원 수정 </button>  <!-- form이 아니기에 JS가 적용된 이 방식을 사용해야 한다. -->
+                    <button onclick="location.href='MemberDeleteForm.jsp?id=<%=mbean.getId()%>'"> 회원 삭제 </button>
+                    <button onclick="location.href='MemberList.jsp'"> 목록 보기 </button>
+                    <button onclick="location.href='MemberJoin.jsp'"> 회원가입 </button>
+                </td>
+            </tr>
         </table>
     </center>
 </body>
