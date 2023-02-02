@@ -2,16 +2,20 @@
 JSP를 공부하여 자바 게시판을 구현해보자!
 
 ### 전체 게시글 조회 기능
-![](../Desktop/카운터.gif)
+![카운터](https://user-images.githubusercontent.com/110895459/216342803-3e1f11c2-8eb6-4305-bf57-21ab8544289e.gif)
+
 
 ### 글 작성 및 답글 작성 기능
-![](../Desktop/글작성 및 답글작성.gif)
+![글작성 및 답글작성](https://user-images.githubusercontent.com/110895459/216342830-e772652a-cf52-4651-a562-5bedb023e08b.gif)
+
 
 ### 글 수정 기능
-![](../Desktop/수정.gif)
+![수정](https://user-images.githubusercontent.com/110895459/216342869-916965bf-c036-4e59-887e-e2fae6ab230e.gif)
+
 
 ### 글 삭제 기능
-![](../Desktop/삭제.gif)
+![삭제](https://user-images.githubusercontent.com/110895459/216342898-c9a5169e-026e-4db6-9479-84eab494fae8.gif)
+
 
 <details>
 <summary>JSP 동작 원리</summary>
