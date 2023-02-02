@@ -164,9 +164,39 @@ String url= "jdbc:oracle:thin:@localhost:1521:XE"; //접속 URL
 
         
 
-- jsp 내에서 db연동
+jsp 내에서 db연동
 - jsp로 데이터를 받아서 DAO java class를 이용해서 db에 넣고 뺀다.
 -  DAO(DATA ACCESS OBJECT) : DB에 접근하는 클래스를 별도로 만들어서 사용 -> DB에 연결하고 사용해야한다.
-- connection pool
+ 
+
+- connection pool : DAO 패턴이나 커넥션을 직접 연결이 아닌 커넥션 풀을 이용하여 사용하는 방법 
+JDBC를 통해 DB에 연결하기 위해서는 드라이버를 로드하고  커넥션 객체를 받아와야하는데 사용자 요청시 매번 로드, 커넥션객체 생성 후 연결하고 종료하기 때문에 매우 비효율적이므로 커넥션풀(DBCP)을 사용한다.
+- 커넥션을 미리 풀에 생성해 두기때문에 DB에 부하를 줄이고 유동적으로 관리 가능하다.
+- connection pool을 사용하기 위해선 server.xml 파일에 수정을 해야한다.
+````
+<Context>
+<Resource name="jdbc/pool" auth="Container" type="javax.sql.DataSource"  
+driverClassName="oracle.jdbc.driver.OracleDriver" loginTimeout="10" maxwait="5000" 
+username="system" password="123456" url="jdbc:oracle:thin:@Localhost:1521:xe"/>
+</context>
+````
+
+DB에 접근할 수 있도록 해주는 getCon() 메서드를 수정해준다.
+````
+public getCon() {
+    try {
+    // 외부에서 데이터를 읽기 위해
+    Context initctx = new InitailContext();
+    // 톰캣 서버 정보를 담아 놓은 곳으로 이동
+    Context envctx = (Context) initctx.lookup("java:comp/env");
+    // 데이터 소스 객체를 선언
+    DataSource ds = (DataSource) envctx.lookup("jdbc/pool");
+    // 데이터 소스를 기준으로 커넥션 연결
+    con = ds.getConnection();
+    } catch (Exception e) {
+        handle exception
+    }
+}
+ ````
 </div>
 </details>
