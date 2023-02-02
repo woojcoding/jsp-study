@@ -188,4 +188,80 @@ public class BoardDAO {
             e.printStackTrace();
         }
     }
+
+    public BoardBean getOneUpdateBoard(int num) {
+        BoardBean bean = new BoardBean();
+
+        getCon();
+
+        try {
+            // 글 찾기 쿼리
+            String sql = "select * from board where num=?";
+
+            this.pstmt = con.prepareStatement(sql);
+            this.pstmt.setInt(1, num);
+
+            rs = this.pstmt.executeQuery();
+
+            if(rs.next()) {
+                bean.setNum(rs.getInt(1));
+                bean.setWriter(rs.getString(2));
+                bean.setEmail(rs.getString(3));
+                bean.setSubject(rs.getString(4));
+                bean.setPassword(rs.getString(5));
+                bean.setReg_date(rs.getDate(6).toString());
+                bean.setRef(rs.getInt(7));
+                bean.setRe_step(rs.getInt(8));
+                bean.setRe_level(rs.getInt(9));
+                bean.setReadCount(rs.getInt(10));
+                bean.setContent(rs.getString(11));
+            }
+
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bean;
+    }
+
+    public String getPass(int num) {
+        String pass = "";
+        getCon();
+
+        try {
+            String sql = "select password from board where num=?";
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1,num);
+
+            rs = pstmt.executeQuery();
+
+            if(rs.next()) {
+                pass = rs.getString(1);
+            }
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return pass;
+    }
+
+    public void updateBoard(BoardBean boardBean) {
+        getCon();
+
+        try {
+            String sql = "update board set subject=?, content = ? where num=?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, boardBean.getSubject());
+            pstmt.setString(2, boardBean.getContent());
+            pstmt.setInt(3,boardBean.getNum());
+
+            pstmt.executeUpdate();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
