@@ -207,5 +207,6 @@ public getCon() {
 
 - 게시판구조 : 글쓰기 -> 전체 글 보기 <-> 글읽기 - 삭제,수정,답글쓰기
 - 게시글 쓰기 : BoardWriteForm.jsp(글쓰기) -> BoardWriteProc.jsp(글쓰기 처리) -> BoardDAO(글쓰기 저장) -> BoardList.jsp(전체 게시글 보기)
+- 게시글 보기 : BoardList.jsp(전체 게시글 보기) -> BoardDAO.getOneBoard()(글 데이터 가져오기) -> BoardInfo.jsp(하나의 게시글 보기) -> BoardReWriteForm.jsp(답글쓰기), BoardUpdateForm.jsp(글 수정), BoardDeleteForm.jsp(글 삭제)
 </div>
 </details>
