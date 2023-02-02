@@ -1,5 +1,18 @@
 # jsp-study
 JSP를 공부하여 자바 게시판을 구현해보자!
+
+### 전체 게시글 조회 기능
+![](../Desktop/카운터.gif)
+
+### 글 작성 및 답글 작성 기능
+![](../Desktop/글작성 및 답글작성.gif)
+
+### 글 수정 기능
+![](../Desktop/수정.gif)
+
+### 글 삭제 기능
+![](../Desktop/삭제.gif)
+
 <details>
 <summary>JSP 동작 원리</summary>
 <div markdown="1">

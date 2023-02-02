@@ -67,15 +67,18 @@ public class BoardDAO {
         }
     }
 
-    public Vector<BoardBean> getAllBoard() {
+    public Vector<BoardBean> getAllBoard(int startRow, int endRow) {
         Vector<BoardBean> vector = new Vector<>();
 
         getCon();
 
         try {
-            String sql = "select * from board order by ref desc, re_step asc";
+            String sql = "select * from (select A.* ,Rownum Rnum from (select  * from board order by ref desc, re_step asc)A)" +
+                    "where Rnum >=? and Rnum <=?";
 
             pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1,startRow);
+            pstmt.setInt(2,endRow);
 
             rs = pstmt.executeQuery();
 
@@ -279,5 +282,28 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public int getAllCount() {
+        int count = 0;
+
+        getCon();
+
+        try {
+            String sql = "select count(*) from board";
+
+            pstmt = con.prepareStatement(sql);
+
+            rs = pstmt.executeQuery();
+
+            if(rs.next()) {
+                count = rs.getInt(1);
+            }
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 }
