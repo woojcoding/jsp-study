@@ -13,8 +13,8 @@
 <body>
   <center>
     <h2> 게시글 쓰기 </h2>
-    <form action="BoardWriteProc.jsp" method="post">
       <table width="600" border="1" bordercolor="black" bgcolor="#808080">
+        <form action="BoardWriteProc.jsp" method="post">
         <tr height="40">
           <td align="center" width="150"> 작성자 </td>
           <td  width="450"><input type="text" name="writer" size="50"></td>
@@ -39,11 +39,11 @@
           <td align="center" colspan="2">
             <input type="submit" value="글쓰기"> &nbsp;&nbsp;
             <input type="reset" value="다시작성">  &nbsp;&nbsp;
+        </form>
             <button onclick="location.href='BoardList.jsp'">전체 게시글 보기</button>
           </td>
         </tr>
       </table>
-    </form>
   </center>
 </body>
 </html>
