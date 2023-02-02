@@ -200,3 +200,12 @@ public getCon() {
  ````
 </div>
 </details>
+
+<details>
+<summary>게시판</summary>
+<div markdown="1">
+
+- 게시판구조 : 글쓰기 -> 전체 글 보기 <-> 글읽기 - 삭제,수정,답글쓰기
+- 게시글 쓰기 : BoardWriteForm.jsp(글쓰기) -> BoardWriteProc.jsp(글쓰기 처리) -> BoardDAO(글쓰기 저장) -> BoardList.jsp(전체 게시글 보기)
+</div>
+</details>
