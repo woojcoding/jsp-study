@@ -146,4 +146,46 @@ public class BoardDAO {
         }
         return bean;
     }
+
+    public void reWriteBoard(BoardBean bean) {
+        // 부모글 그룹과 글레벨 글 스텝을 얻어온다.
+        int ref = bean.getRef();
+        int re_step = bean.getRe_step();
+        int re_level = bean.getRe_level();
+
+        getCon();
+
+        try {
+            // 부모글 보다 큰 re_level의 값을 전부 1씩 증가시켜줌
+            String levelSql = "update board set re_level = re_level + 1 " +
+                    "where ref=? and re_level > ?";
+
+            pstmt = con.prepareStatement(levelSql);
+            pstmt.setInt(1,ref);
+            pstmt.setInt(2,re_level);
+
+            pstmt.executeQuery();
+
+            //답변글 데이터를 저장
+            String sql = "insert into board " +
+                    "values(board_seq.NEXTVAL, ?, ?, ?, ?, sysdate, ?, ?, ?, 0, ?)";
+
+            pstmt = con.prepareStatement(sql);
+
+            pstmt.setString(1, bean.getWriter());
+            pstmt.setString(2, bean.getEmail());
+            pstmt.setString(3, bean.getSubject());
+            pstmt.setString(4, bean.getPassword());
+            pstmt.setInt(5,ref); // 부모의 ref 넣어줌
+            pstmt.setInt(6,re_step + 1); // 답글이니 부모글의 re_step에  + 1 해준다.
+            pstmt.setInt(7,re_level + 1); // 부모글 다음에 오기위해 + 1
+            pstmt.setString(8,bean.getContent());
+
+            pstmt.executeUpdate();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
